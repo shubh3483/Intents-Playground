@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Intents Playground</string>
+    <string name="open_webpage">Open WebPage</string>
+    <string name="dial_number">Dial Number</string>
+    <string name="share_text">Share Text</string>
+    <string name="go">Go</string>
+    <string name="explicit_intent">Sending &amp; Receiving Data</string>
+    <string name="send">Send</string>
+</resources>
