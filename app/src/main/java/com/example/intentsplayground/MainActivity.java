@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         getInitialCount();
     }
 
+
+    /**
+     * To take "Intent" from the IntentsPlaygroundActivity.
+     */
     private void getInitialCount() {
 
         Bundle bundle = getIntent().getExtras();
@@ -37,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Event Handlers
+     */
     private void setUpEventHandlers() {
 
         b.plusButton.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Utils
+     */
     private void decQty() {
         qty--;
         b.textViewMA.setText(String.valueOf(qty));
@@ -64,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
         b.textViewMA.setText(String.valueOf(qty));
     }
 
-
+    /**
+     * This function is to return the counter value according to the range.
+     * @param view
+     */
     public void sendBack(View view) {
 
         if(qty >= minValue && qty <= maxValue){
