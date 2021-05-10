@@ -4,9 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import com.example.intentsplayground.databinding.ActivityIntentsPlaygroundBindin
 public class IntentsPlaygroundActivity extends AppCompatActivity {
 
     private static final int REQUEST_COUNT = 0;
+    String choiceInput = "";
+    String numberInput = "";
     ActivityIntentsPlaygroundBinding b;
 
     @Override
@@ -25,7 +29,13 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         b = ActivityIntentsPlaygroundBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
         setTitle("Intents Playground");
-
+        if(savedInstanceState == null){
+            SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+            choiceInput = preferences.getString(Constants.CHOICE_INPUT, "");
+            numberInput = preferences.getString(Constants.NUMBER_INPUT, "");
+            b.TIL1.getEditText().setText(choiceInput);
+            b.TIL2.getEditText().setText(numberInput);
+        }
         setupHideErrorForEditText();
     }
 
@@ -64,9 +74,9 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
 
     public void sendImplicitIntent(View view) {
 
-        String input = b.TIL1.getEditText().getText().toString().trim();
+        choiceInput = b.TIL1.getEditText().getText().toString().trim();
 
-        if(input.isEmpty()){
+        if(choiceInput.isEmpty()){
             b.TIL1.setError("Please enter something");
             return;
         }
@@ -74,27 +84,28 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
         int type = b.ImplicitRadioBtnGrp.getCheckedRadioButtonId();
         
         if(type == R.id.openWebPageRBTn){
-            openWebPage(input);
+            openWebPage(choiceInput);
         }
         else if(type == R.id.dialNoRadioBTn){
-            dialNumber(input);
+            b.TIL1.getEditText().setInputType(InputType.TYPE_CLASS_NUMBER);
+            dialNumber(choiceInput);
         }
         else if(type == R.id.shareTextRadioBTn){
-            shareText(input);
+            shareText(choiceInput);
         }
         else Toast.makeText(this,"Choose type",Toast.LENGTH_LONG).show();
 
     }
 
     public void sendData(View view) {
-        String input = b.TIL2.getEditText().getText().toString().trim();
+        numberInput = b.TIL2.getEditText().getText().toString().trim();
 
-        if(input.isEmpty()){
+        if(numberInput.isEmpty()){
             b.TIL2.setError("Please enter something");
             return;
         }
 
-        int initialCounter = Integer.parseInt(input);
+        int initialCounter = Integer.parseInt(numberInput);
         Intent intent = new Intent(this, MainActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(Constants.INITIAL_COUNT_KEY,initialCounter);
@@ -109,11 +120,21 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQUEST_COUNT && resultCode == RESULT_OK){
+        if(requestCode == REQUEST_COUNT && resultCode == RESULT_OK) {
             int count = data.getIntExtra(Constants.FINAL_COUNT, Integer.MIN_VALUE);
             b.result.setText("Final Count received is : " + count);
             b.result.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        preferences.edit()
+                .putString(Constants.CHOICE_INPUT, choiceInput)
+                .putString(Constants.NUMBER_INPUT, numberInput)
+                .apply();
     }
 
     /**
@@ -162,6 +183,4 @@ public class IntentsPlaygroundActivity extends AppCompatActivity {
     private void hideError(){
         b.TIL1.setError(null);
     }
-
-
 }

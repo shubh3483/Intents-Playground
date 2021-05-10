@@ -66,9 +66,12 @@
         tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/choiceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF" />
+            android:background="#FFFFFF"
+            android:imeOptions="actionNext"
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -148,9 +151,12 @@
         app:layout_constraintTop_toBottomOf="@+id/SRDTv">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/numberEditText"
             android:layout_width="267dp"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF" />
+            android:background="#FFFFFF"
+            android:inputType="number"
+            android:imeOptions="actionSend"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,8 +1,10 @@
 package com.example.intentsplayground;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -19,9 +21,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         b = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
+        //SharedPreferences preferences = getPreferences(MODE_PRIVATE);
         setUpEventHandlers();
-
         getInitialCount();
+        if(savedInstanceState != null){
+            qty = savedInstanceState.getInt(Constants.QTY);
+            b.textViewMA.setText(String.valueOf(qty));
+        }/*else {
+            qty = preferences.getInt(Constants.QTY, 0);
+            b.textViewMA.setText(String.valueOf(qty));
+        }*/
     }
 
 
@@ -86,11 +95,25 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.putExtra(Constants.FINAL_COUNT, qty);
             setResult(RESULT_OK, intent);
-
             finish();
         }
         else {
             Toast.makeText(this, "Max range is 100", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(Constants.QTY, qty);
+    }
+
+    /*@Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        preferences.edit()
+                .putInt(Constants.QTY, qty)
+                .apply();
+    }*/
 }
