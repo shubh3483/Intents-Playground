@@ -1,186 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".IntentsPlaygroundActivity">
-
-
-    <TextView
-        android:id="@+id/ExplicitIntentTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Explicit Intent"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <Button
-        android:id="@+id/MainActivityBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="openMainActivity"
-        android:text="Open Main Activity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExplicitIntentTv" />
-
-    <View
-        android:id="@+id/view"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="4dp"
-        android:background="#8F8989"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityBtn"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_height="match_parent"
+        tools:context=".IntentsPlaygroundActivity">
 
-    <TextView
-        android:id="@+id/ImplicitTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="Implicit Intent"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TIL1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Data"
-        android:onClick="sendImplicitIntent"
-        app:layout_constraintTop_toBottomOf="@+id/ImplicitTv"
-        tools:layout_editor_absoluteX="16dp">
+        <TextView
+            android:id="@+id/ExplicitIntentTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Explicit Intent"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.007" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/choiceEditText"
+        <Button
+            android:id="@+id/MainActivityBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="openMainActivity"
+            android:text="Open Main Activity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ExplicitIntentTv" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="4dp"
+            android:background="#8F8989"
+            app:layout_constraintTop_toBottomOf="@+id/MainActivityBtn"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/ImplicitTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Implicit Intent"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIL1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:imeOptions="actionNext"
-            android:inputType="text"/>
+            android:layout_marginTop="16dp"
+            android:hint="Data"
+            android:onClick="sendImplicitIntent"
+            app:layout_constraintTop_toBottomOf="@+id/ImplicitTv"
+            tools:layout_editor_absoluteX="16dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/choiceEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:imeOptions="actionNext"
+                android:inputType="text"/>
 
-    <RadioGroup
-        android:id="@+id/ImplicitRadioBtnGrp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/TIL1">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <RadioButton
-            android:id="@+id/openWebPageRBTn"
+        <RadioGroup
+            android:id="@+id/ImplicitRadioBtnGrp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/open_webpage" />
+            app:layout_constraintTop_toBottomOf="@+id/TIL1">
 
-        <RadioButton
-            android:id="@+id/dialNoRadioBTn"
+            <RadioButton
+                android:id="@+id/openWebPageRBTn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/open_webpage" />
+
+            <RadioButton
+                android:id="@+id/dialNoRadioBTn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dial_number" />
+
+            <RadioButton
+                android:id="@+id/shareTextRadioBTn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_text" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/GoBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dial_number" />
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="8dp"
+            android:onClick="sendImplicitIntent"
+            android:text="@string/go"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ImplicitRadioBtnGrp"
+            tools:ignore="MissingConstraints" />
 
-        <RadioButton
-            android:id="@+id/shareTextRadioBTn"
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="8dp"
+            android:background="#8F8989"
+            app:layout_constraintTop_toBottomOf="@+id/GoBtn"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/SRDTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/share_text" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/explicit_intent"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/GoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="8dp"
-        android:onClick="sendImplicitIntent"
-        android:text="@string/go"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImplicitRadioBtnGrp"
-        tools:ignore="MissingConstraints" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:background="#8F8989"
-        app:layout_constraintTop_toBottomOf="@+id/GoBtn"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/SRDTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/explicit_intent"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TIL2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Data"
-        android:layout_marginLeft="24dp"
-        android:inputType="number"
-        android:maxLength="3"
-        android:layout_marginRight="100dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/SRDTv">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/numberEditText"
-            android:layout_width="267dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TIL2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:hint="Data"
+            android:layout_marginLeft="24dp"
             android:inputType="number"
-            android:imeOptions="actionSend"/>
+            android:maxLength="3"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/SRDTv">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/numberEditText"
+                android:layout_width="267dp"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:inputType="number"
+                android:imeOptions="actionSend"/>
 
-    <Button
-        android:id="@+id/SendBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/send"
-        android:onClick="sendData"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/TIL2"
-        app:layout_constraintTop_toBottomOf="@+id/SRDTv" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TIL2" />
+        <Button
+            android:id="@+id/SendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/send"
+            android:onClick="sendData"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/TIL2"
+            app:layout_constraintTop_toBottomOf="@+id/SRDTv" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TIL2" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
