@@ -2,7 +2,7 @@
 
 This project gives a basic understanding of how intents work in in an android application and a basic app is also created.
 
-Apk for the app : https://github.com/shubh3483/Intents-Playground/releases/download/5.3.2/Intents-Playground1.apk
+Apk for the app : https://github.com/shubh3483/Intents-Playground/releases/download/v5.3.3/Intents-Playground.apk
 
 Some screenshots have been attached below for better understanding.
 
